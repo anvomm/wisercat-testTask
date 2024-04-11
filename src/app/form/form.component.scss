@@ -1,0 +1,264 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+@import "../styles/placeholders.scss";
+
+.form {
+  @include flex-column(45px);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 10px;
+  border: $border-color solid 2px;
+}
+
+.form__content {
+  @include flex-column(15px);
+}
+
+.form__input-wrap {
+  @include flex-column(8px);
+  font-size: 12px;
+}
+
+.form__input {
+  padding: 8px;
+  font-size: 13px;
+  background: inherit;
+  color: inherit;
+  border: $input-border-color solid 1px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: $text-color;
+    -webkit-box-shadow: 0 0 0px 1000px $dark-color inset;
+  }
+}
+
+.form__required,
+.form__input-error {
+  color: $error-color;
+}
+
+.form__input-error {
+  font-size: 12px;
+}
+
+.form__button-icon {
+  @extend %flex-centering;
+  color: $dark-color;
+  transition: transform linear 250ms;
+
+  &_submit {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_reset {
+    width: 23px;
+    height: 23px;
+  }
+
+  .form__button:hover & {
+    transform: scale(1.2);
+  }
+}
+
+.form__button-wrap_mobile {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form__button-wrap_desktop {
+  display: none;
+}
+
+.form__button {
+  @extend %flex-centering;
+  padding: 10px;
+  width: 110px;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: $text-color;
+  border-radius: 4px;
+  transition: background-color linear 250ms;
+
+  &:hover {
+    background-color: $border-color;
+  }
+
+  &_submit {
+    gap: 8px;
+  }
+
+  &_reset {
+    gap: 3px;
+  }
+}
+
+@media screen and (min-width: $tablet-small-start-width) {
+  .form {
+    margin: 0 auto;
+  }
+
+  .form__input {
+    padding: 10px;
+  }
+
+  .form__button-icon {
+    &_submit {
+      font-size: 18px;
+    }
+
+    &_reset {
+      font-size: 20px;
+    }
+  }
+}
+
+@media screen and (min-width: $tablet-small-start-width) and (max-width: $tablet-small-end-width) {
+  .form {
+    width: 420px;
+    padding: 30px 20px;
+  }
+
+  .form__input-wrap {
+    font-size: 13px;
+  }
+
+  .form__input {
+    font-size: 14px;
+  }
+
+  .form__input-error {
+    font-size: 13px;
+  }
+
+  .form__button {
+    padding: 15px;
+    width: 130px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: $tablet-start-width) {
+  .form {
+    width: 550px;
+    padding: 35px 25px;
+  }
+
+  .form__content {
+    gap: 20px;
+  }
+
+  .form__button {
+    padding: 15px;
+    width: 140px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: $tablet-start-width) and (max-width: $tablet-end-width) {
+  .form__input-wrap,
+  .form__input-error {
+    font-size: 14px;
+  }
+
+  .form__input {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: $desktop-width) {
+  .form__input-wrap,
+  .form__input-error {
+    font-size: 15px;
+  }
+
+  .form__input {
+    font-size: 17px;
+  }
+
+  .form__button-wrap_mobile {
+    display: none;
+  }
+
+  .form__button-wrap_desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .form__button_desktop {
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    width: 150px;
+    height: auto;
+  }
+
+  .form__button_desktop-circle {
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 48px;
+    height: 48px;
+    background-color: $text-color;
+    border-radius: 4px;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+    .form__button_desktop:hover & {
+      width: 100%;
+    }
+  }
+
+  .form__button_desktop-icon {
+    position: absolute;
+    color: $dark-color;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+    .form__button_desktop:hover & {
+      transform: translate(16px, 0);
+    }
+  }
+
+  .form__button_desktop-submit-icon {
+    top: 18px;
+    left: 14px;
+  }
+
+  .form__button_desktop-reset-icon {
+    top: 18px;
+    left: 17px;
+  }
+
+  .form__button_desktop-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 12px 0;
+    margin: 0 0 0 43px;
+    color: $text-color;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+
+    .form__button_desktop:hover & {
+      color: $dark-color;
+    }
+  }
+}

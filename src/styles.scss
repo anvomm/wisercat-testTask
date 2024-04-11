@@ -1,0 +1,32 @@
+@import "./app/styles/variables.scss";
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat//Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  padding: 40px 20px;
+  font-family: "Montserrat";
+  color: $text-color;
+  background: linear-gradient(
+    109.6deg,
+    rgb(36, 45, 57) 11.2%,
+    rgb(16, 37, 60) 51.2%,
+    rgb(0, 0, 0) 98.6%
+  );
+}
+
+h1,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}

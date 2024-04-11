@@ -1,0 +1,123 @@
+<form class="form" [formGroup]="form">
+  @if (showMessage) {
+  <app-message [text]="messageText" [type]="messageType"></app-message>
+  }
+  <div class="form__content">
+    <div class="form__input-wrap">
+      <label for="name-input"
+        >Name<span class="form__required"> *</span>
+      </label>
+      <input
+        id="name-input"
+        class="form__input"
+        (ngModelChange)="clearMessage()"
+        type="text"
+        formControlName="name"
+      />
+      @if(form.controls.name.errors?.['required'] && form.controls.name.touched)
+      {
+      <div class="form__input-error">The name field is required!</div>
+      }
+    </div>
+
+    <div class="form__input-wrap">
+      <label for="surname-input"
+        >Surname<span class="form__required"> *</span></label
+      >
+      <input
+        id="surname-input"
+        class="form__input"
+        type="text"
+        formControlName="surname"
+        (ngModelChange)="clearMessage()"
+      />
+
+      @if(form.controls.surname.errors?.['required'] &&
+      form.controls.surname.touched) {
+      <div class="form__input-error">The surname field is required!</div>
+      }
+    </div>
+    <div class="form__input-wrap">
+      <label for="email-input"
+        >Email<span class="form__required"> *</span> </label
+      ><input
+        id="email-input"
+        class="form__input"
+        type="email"
+        formControlName="email"
+        (ngModelChange)="clearMessage()"
+      />
+
+      @if(form.controls.email.errors?.['required'] &&
+      form.controls.email.touched) {
+      <div class="form__input-error">The email field is required!</div>
+      } @if(form.controls.email.touched &&
+      form.controls.email.errors?.['email']) {
+      <div class="form__input-error">Please enter a valid email!</div>
+      }
+    </div>
+
+    <div class="form__input-wrap">
+      <label for="input-experience"
+        >Working experience (months)<span class="form__required">
+          *</span
+        ></label
+      >
+      <input
+        id="input-experience"
+        class="form__input"
+        type="number"
+        formControlName="workingExperience"
+        (ngModelChange)="clearMessage()"
+      />
+
+      @if(form.controls.workingExperience.errors?.['required'] &&
+      form.controls.workingExperience.touched) {
+      <div class="form__input-error">This field is required!</div>
+      } @if(form.controls.workingExperience.errors?.['forbiddenExperience'] &&
+      form.controls.workingExperience.touched){
+
+      <div class="form__input-error">
+        Only one number after comma is allowed!
+      </div>
+
+      }
+    </div>
+  </div>
+
+  <div class="form__button-wrap_mobile">
+    <button
+      class="form__button form__button_submit"
+      type="submit"
+      (click)="submitForm()"
+    >
+      <i class="fa fa-send form__button-icon form__button-icon_submit"></i
+      >Submit
+    </button>
+    <button
+      class="form__button form__button_reset"
+      type="button"
+      (click)="clearForm()"
+    >
+      <i class="fa fa-trash form__button-icon form__button-icon_reset"></i>Reset
+    </button>
+  </div>
+  <div class="form__button-wrap_desktop">
+    <button class="form__button_desktop" (click)="submitForm()">
+      <span class="form__button_desktop-circle" aria-hidden="true">
+        <i
+          class="fa fa-send fa-lg form__button_desktop-icon form__button_desktop-submit-icon"
+        ></i>
+      </span>
+      <span class="form__button_desktop-text">Submit</span>
+    </button>
+    <button class="form__button_desktop" (click)="clearForm()">
+      <span class="form__button_desktop-circle" aria-hidden="true">
+        <i
+          class="fa fa-trash fa-lg form__button_desktop-icon form__button_desktop-reset-icon"
+        ></i>
+      </span>
+      <span class="form__button_desktop-text">Reset</span>
+    </button>
+  </div>
+</form>

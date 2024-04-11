@@ -1,0 +1,29 @@
+@import "./styles/variables.scss";
+
+.title {
+  margin-bottom: 30px;
+  font-size: 22px;
+  text-align: center;
+  color: $heading-color;
+}
+
+@media screen and (min-width: $tablet-small-start-width) and (max-width: $tablet-small-end-width) {
+  .title {
+    font-size: 26px;
+    margin-bottom: 35px;
+  }
+}
+
+@media screen and (min-width: $tablet-start-width) and (max-width: $tablet-end-width) {
+  .title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: $desktop-width) {
+  .title {
+    font-size: 36px;
+    margin-bottom: 45px;
+  }
+}
